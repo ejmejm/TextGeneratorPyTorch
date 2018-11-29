@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div id="upper-div">
+    <div class="rel-center">
+        <h1 style="color: {{ClassColor}}">
+        <span id="class">{{Class}}</span>
+        </h1>
+    </div>
+</div>
+
+<div id="lower-div">
+    <form method="post" action="/classify">
+        <h2>
+        Please Enter a Headline
+        <br>
+        <input type="text" class="text-box" name="headline">
+        <br>
+        <input type="submit" class="button" value="classify">
+        </h2>
+    </form>
+</div>
+{% endblock %}

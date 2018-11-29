@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bias Classifier</title>
+        <link rel="stylesheet" type="{{ url_for('static',filename='css/style.css') }}">
+        <style>
+            html, body {
+                background-color: #464b50;
+                color: rgb(230, 230, 230);
+                text-align: center;
+                vertical-align: middle;
+                height: 80%;
+                font-family: Helvetica;
+            }
+
+            div{
+                position: relative;
+                height: 50%;
+                width: 100%;
+            }
+
+            span#class{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+
+            .rel-center{
+                height: 100%;
+                text-align: center;
+            }
+
+            h1{
+                font-size: 120px;
+            }
+
+            .button{
+                background-color: transparent;
+                border-color: rgb(230, 230, 230);
+                color: rgb(230, 230, 230);
+                padding: 4px 16px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 18px;
+                margin: 10px 10px;
+                cursor: pointer;
+                border-style: solid;
+            }
+
+            .text-box{
+                border: none;
+                background-color: rgb(245, 245, 245);
+                width: 300px;
+                height: 30px;
+                font-size: 30px;
+                color: rgb(50, 50, 50);
+                margin: 10px;
+            }
+
+            input:focus{
+                outline-color: rgb(230, 230, 230);
+            }
+            
+            input[type="text"]{
+                font-family: Helvetica;
+            }
+        </style>
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+</html>
