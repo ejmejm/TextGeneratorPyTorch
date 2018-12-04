@@ -7,7 +7,6 @@ import tensorflow as tf
 import pickle
 from keras.models import load_model
 from nltk.tokenize import RegexpTokenizer
-from nltk.corpus import stopwords
 from keras.preprocessing import sequence
 
 class Classifier():
@@ -17,7 +16,7 @@ class Classifier():
         self.model = load_model('model.hdf5')
         self.graph = tf.get_default_graph()
         self.formatter = RegexpTokenizer(r'\w+')
-        self.stop_words = set(stopwords.words('english'))
+        self.stop_words = set(['has', 'was', 'ain', 'she', 'did', 'any', 'should', 'those', 'again', 'from', 'at', 'in', 'yours', 'all', 'do', 'wasn', 'or', 'on', 'through', 'only', 'for', 'what', 'own', 'both', 'which', 'above', 'but', 'about', 'while', 'the', 'isn', 'into', 'haven', 'of', 'don', 'needn', 'most', 'been', 'him', 'over', 'if', 'aren', 'weren', 'hadn', 'against', 'off', 'am', 'between', 'nor', 'shan', 'i', 'being', 'with', 'm', 've', 'now', 'this', 'mightn', 'he', 'up', 'herself', 'doesn', 'as', 'whom', 'than', 'a', 'myself', 'how', 'll', 'yourselves', 'me', 'hasn', 'does', 'can', 'very', 'by', 'my', 'why', 'having', 'further', 'them', 'so', 'here', 'our', 'ma', 'when', 'themselves', 'be', 'under', 'didn', 'o', 'they', 'out', 't', 'we', 'such', 'where', 'is', 'won', 'who', 'same', 'not', 'few', 'will', 'no', 'and', 'below', 'you', 'more', 'couldn', 'after', 'that', 'their', 'theirs', 'hers', 'yourself', 'were', 'too', 're', 'then', 'once', 'ours', 'mustn', 'during', 'have', 'y', 'd', 'are', 'until', 'had', 'its', 'an', 'some', 'his', 'these', 'doing', 'other', 'shouldn', 's', 'it', 'himself', 'ourselves', 'down', 'her', 'just', 'itself', 'before', 'because', 'there', 'to', 'your', 'each', 'wouldn'])
         self.max_seq_len = 20
 
     def format_sent(self, sent):
@@ -38,9 +37,12 @@ class Classifier():
             return 'left'
         return 'right'
 
-    def classify_sentence(self, sent):
+    def classify_sentence(self, sent, discrete=True):
         formatted_sent = self.format_sent(sent)
         preprocessed_sent = self.preprocess_sent(formatted_sent)
         pred = self.classify(preprocessed_sent)
-        final_class = self.prediction_to_str(pred)
+        if discrete:
+            final_class = self.prediction_to_str(pred)
+        else:
+            final_class = pred.tolist()
         return final_class
