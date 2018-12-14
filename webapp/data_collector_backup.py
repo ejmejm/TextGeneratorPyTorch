@@ -15,7 +15,7 @@ class RedditAgent():
         subreddit = self.reddit.subreddit(subreddit_name)
         headlines = []
         for submission in subreddit.hot(limit=limit):
-            headlines.append((submission.title, submission.url))
+            headlines.append(submission.title)
         return headlines
 
     def get_politics(self, limit=50):
@@ -42,9 +42,9 @@ def reddit_db_updater(agent, db, row_type, clf, stop_event, n_headlines=50, upda
         print('Pulling {} headlines from Reddit'.format(len(headlines)))
 
         for headline in headlines:
-            regression = clf.classify_sentence(headline[0], discrete=False)
+            regression = clf.classify_sentence(headline, discrete=False)
             class_pred = clf.prediction_to_str(regression)
-            reddit_headline = row_type(headline[0], headline[1], regression, class_pred)
+            reddit_headline = row_type(headline, regression, class_pred)
             db.session.add(reddit_headline)
         db.session.commit()
 

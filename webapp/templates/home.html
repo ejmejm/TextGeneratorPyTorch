@@ -3,8 +3,8 @@
 {% block body %}
 <div id="upper-div">
     <div class="rel-center">
-        <h1 style="color: {{ClassColor}}">
-        <span id="class">{{Class}}</span>
+        <h1 style="color: {{ ClassColor }}">
+        <span id="class">{{ Class }} ({{ ClassPercent }}%)</span>
         </h1>
     </div>
 </div>
@@ -19,5 +19,21 @@
         <input type="submit" class="button" value="classify">
         </h2>
     </form>
+</div>
+<div id="bottom-div">
+    <div class="left-column">
+        <div class="reddit-news-box" readonly>
+{% for headline in LeftReddit %}
+<h3 style="color: rgb{{ headline['color'] }}"> <a href='{{ headline['src_link'] }}'>{{ headline['text'] }}</a> [{{headline['src']}}, {{ headline['bias_perc'] }}%] </h5>
+{% endfor %}
+        </div>
+    </div>
+    <div class="right-column">
+        <div class="reddit-news-box" readonly>
+{% for headline in RightReddit %}
+<h3 style="color: rgb{{headline['color']}}"> <a href='{{ headline['src_link'] }}'>{{ headline['text'] }}</a> [{{headline['src']}}, {{ headline['bias_perc'] }}%] </h5>
+{% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}

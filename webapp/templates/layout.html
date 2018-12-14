@@ -10,7 +10,7 @@
                 color: rgb(230, 230, 230);
                 text-align: center;
                 vertical-align: middle;
-                height: 80%;
+                height: 85%;
                 font-family: Helvetica;
             }
 
@@ -51,23 +51,114 @@
             }
 
             .text-box{
-                border: none;
-                background-color: rgb(245, 245, 245);
-                width: 300px;
+                border-color: rgb(245, 245, 245);
+                border-style: solid;
+                background-color: #4a5055;
+                width: 600px;
                 height: 30px;
-                font-size: 30px;
-                color: rgb(50, 50, 50);
+                font-size: 25px;
+                color: rgb(230, 230, 230);
                 margin: 10px;
+                padding: 5px;
+                border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
             }
 
             input:focus{
-                outline-color: rgb(230, 230, 230);
+                outline-color: none;
+                outline: none;
             }
             
             input[type="text"]{
                 font-family: Helvetica;
             }
+
+            div#upper-div{
+                height: 40%;
+            }
+
+            div#lower-div{
+                height: 50%;
+            }
+
+            div#bottom-div{
+                height: 30%;
+                float: left;
+            }
+
+            div.left-column{
+                width: 48%;
+                height: 100%;
+                float: left;
+                margin-left: 5px;
+            }
+
+            div.right-column{
+                width: 48%;
+                height: 100%;
+                float: right;
+                margin-right: 5px;
+            }
+
+            div.reddit-news-box{
+                max-width: 800px;
+                background-color: #00000017;
+                border-color: transparent;
+                text-align: left;
+                color: rgb(230, 230, 230);
+                font-family: Helvetica;
+                resize: none;
+                width: 100%;
+                height: 100%;
+                overflow-y: scroll;
+                resize: none;
+            }
+
+            textarea:focus{
+                outline: none;
+            }
+
+            a{
+                text-decoration: none;
+                color: inherit;
+            }
+
+            /* https://stackoverflow.com/questions/3608735/how-to-change-scrollbar-in-textarea-input */
+            
+            ::-webkit-scrollbar{
+                width: 6px;
+                height: 10px;
+            }
+
+            ::-webkit-scrollbar-button:start:decrement,
+            ::-webkit-scrollbar-button:end:increment{
+                height: 10px;
+                background-color: transparent;
+            }
+
+            ::-webkit-scrollbar-track-piece{
+                background-color: rgb(50, 50, 50);
+                -webkit-border-radius: 16px;
+                border-radius: 16px;
+            }
+
+            ::-webkit-scrollbar-thumb:vertical{
+                height: 10px;
+                background-color: #666;
+                border: 1px solid rgb(50, 50, 50);
+                -webkit-border-radius: 16px;
+                border-radius: 16px;
+            }
+
+            ::-webkit-scrollbar-corner {
+                background: rgba(0,0,0,0);
+            }
         </style>
+
+
+        <script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+
+        <script src="/static/animateNumber/demo/jquery.color.min.js"></script>
+        <script src="/static/animateNumber/jquery.animateNumber.min.js"></script>
     </head>
     <body>
         {% block body %}{% endblock %}
